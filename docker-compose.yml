@@ -1,7 +1,9 @@
 services:
   api:
-#    build: .
-    image: quarkus/finance-api-jvm:latest
+    build:
+      context: .
+      dockerfile: Dockerfile-jvm-builder
+#    image: quarkus/finance-api-jvm:latest
     ports:
       - "8080:8080"
     depends_on:

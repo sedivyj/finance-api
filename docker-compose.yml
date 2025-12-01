@@ -8,6 +8,8 @@ services:
       - "8080:8080"
     depends_on:
       - db
+    networks:
+      - finance_network
   db:
     image: postgres:14-alpine # You can choose a specific version like 14-alpine
     restart: always
@@ -19,6 +21,11 @@ services:
       - "5431:5432" # Maps host port 5432 to container port 5432
     volumes:
       - db_data:/var/lib/postgresql/data # Persists data to a named volume
+    networks:
+      - finance_network
 
 volumes:
   db_data: # Defines the named volume for data persistence
+
+networks:
+  finance_network:
